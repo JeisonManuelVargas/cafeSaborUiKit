@@ -18,8 +18,8 @@ class AppThere {
             borderSide: const BorderSide(color: UiColor.textColor),
           ),
         ),
-        appBarTheme: const AppBarTheme(color: UiColor.primary),
-        scaffoldBackgroundColor: UiColor.primary,
+        appBarTheme: const AppBarTheme(color: UiColor.background),
+        scaffoldBackgroundColor: UiColor.background,
         colorScheme: const ColorScheme.dark(
           primary: Colors.white,
         ),
