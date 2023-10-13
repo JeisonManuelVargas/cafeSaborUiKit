@@ -4,16 +4,35 @@ import 'package:flutter/material.dart';
 
 class CafeTextStyle{
 
-  TextStyle get title {
+  TextStyle get titleXL {
     return _baseTextStyle.copyWith(
-      fontSize: 30,
+      fontSize: 40,
       fontFamily: FontFamilyType.SaborFont.name
     );
   }
 
-  TextStyle get description {
+  TextStyle get title {
+    return _baseTextStyle.copyWith(
+        fontSize: 32,
+        fontFamily: FontFamilyType.SaborFont.name
+    );
+  }
+
+  TextStyle get text {
     return _baseTextStyle.copyWith(
         fontSize: 14,
+        fontFamily: FontFamilyType.Borna.name
+    );
+  }
+  TextStyle get titleBorna {
+    return _baseTextStyle.copyWith(
+        fontSize: 20,
+        fontFamily: FontFamilyType.Borna.name
+    );
+  }
+  TextStyle get description {
+    return _baseTextStyle.copyWith(
+        fontSize: 25,
         fontFamily: FontFamilyType.Borna.name
     );
   }
