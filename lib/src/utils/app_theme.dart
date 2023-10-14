@@ -7,14 +7,14 @@ class AppThere {
           labelStyle: const TextStyle(color: UiColor.textColor),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: UiColor.textColor),
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(7.0),
           ),
           border: OutlineInputBorder(
             borderSide: const BorderSide(color: UiColor.textColor),
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(7.0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(7.0),
             borderSide: const BorderSide(color: UiColor.textColor),
           ),
         ),
