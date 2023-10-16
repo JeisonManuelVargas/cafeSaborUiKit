@@ -6,8 +6,16 @@ class CafeTextStyle{
 
   TextStyle get titleXL {
     return _baseTextStyle.copyWith(
-      fontSize: 40,
+      fontSize: 70,
       fontFamily: FontFamilyType.SaborFont.name
+    );
+  }
+
+
+  TextStyle get titleL {
+    return _baseTextStyle.copyWith(
+        fontSize: 40,
+        fontFamily: FontFamilyType.SaborFont.name
     );
   }
 
