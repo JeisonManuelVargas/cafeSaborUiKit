@@ -16,6 +16,7 @@ class _DarkButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: UiColor().backgroundButton,
       borderRadius: BorderRadius.circular(100),
       child: InkWell(
         onTap: () => buttonModel.onTap(),
@@ -39,7 +40,7 @@ class _LightButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        border: Border.all(color: UiColor.backgroundButton),
+        border: Border.all(color: UiColor().backgroundButton),
       ),
       child: InkWell(
         onTap: () => buttonModel.onTap(),
@@ -48,10 +49,10 @@ class _LightButton extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             buttonModel.label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: UiColor.backgroundButton,
+              color: UiColor().backgroundButton,
             ),
           ),
         ),

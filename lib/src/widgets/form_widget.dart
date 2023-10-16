@@ -36,17 +36,17 @@ class _Input extends StatelessWidget {
       onChanged: onChange,
       validator: validator,
       keyboardType: keyboardType,
-      cursorColor: UiColor.textColor,
-      style: const TextStyle(
+      cursorColor: UiColor().textColor,
+      style: TextStyle(
         fontSize: 14,
-        color: UiColor.textColor,
+        color: UiColor().textColor,
         fontWeight: FontWeight.w500,
       ),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           fontSize: 14,
-          color: UiColor.textColor,
+          color: UiColor().textColor,
           fontWeight: FontWeight.w500,
         ),
       ),

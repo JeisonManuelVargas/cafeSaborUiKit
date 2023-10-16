@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 class AppThere {
   ThemeData getThemeData() => ThemeData(
         inputDecorationTheme: InputDecorationTheme(
-          labelStyle: const TextStyle(color: UiColor.textColor),
+          labelStyle: TextStyle(color: UiColor().textColor),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: UiColor.textColor),
+            borderSide:  BorderSide(color: UiColor().textColor),
             borderRadius: BorderRadius.circular(7.0),
           ),
           border: OutlineInputBorder(
-            borderSide: const BorderSide(color: UiColor.textColor),
+            borderSide:  BorderSide(color: UiColor().textColor),
             borderRadius: BorderRadius.circular(7.0),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(7.0),
-            borderSide: const BorderSide(color: UiColor.textColor),
+            borderSide:  BorderSide(color: UiColor().textColor),
           ),
         ),
-        appBarTheme: const AppBarTheme(color: UiColor.background),
-        scaffoldBackgroundColor: UiColor.background,
+        appBarTheme:  AppBarTheme(color: UiColor().background),
+        scaffoldBackgroundColor: UiColor().background,
         colorScheme: const ColorScheme.dark(
           primary: Colors.white,
         ),

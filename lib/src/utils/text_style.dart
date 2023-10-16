@@ -14,6 +14,7 @@ class CafeTextStyle{
   TextStyle get title {
     return _baseTextStyle.copyWith(
         fontSize: 32,
+        height: 1.3,
         fontFamily: FontFamilyType.SaborFont.name
     );
   }
@@ -21,6 +22,7 @@ class CafeTextStyle{
   TextStyle get text {
     return _baseTextStyle.copyWith(
         fontSize: 14,
+        height: 1.7,
         fontFamily: FontFamilyType.Borna.name
     );
   }
@@ -38,8 +40,8 @@ class CafeTextStyle{
   }
 
   /// BASE
-  static const _baseTextStyle = TextStyle(
-    color: UiColor.textColor,
+   TextStyle _baseTextStyle = TextStyle(
+    color: UiColor().textColor,
     fontWeight: FontWeight.normal,
   );
 }
