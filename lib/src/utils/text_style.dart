@@ -43,12 +43,20 @@ class CafeTextStyle{
   TextStyle get description {
     return _baseTextStyle.copyWith(
         fontSize: 25,
+        fontWeight: FontWeight.w600,
+        fontFamily: FontFamilyType.Borna.name
+    );
+  }
+  TextStyle get descriptionProduct {
+    return _baseTextStyle.copyWith(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
         fontFamily: FontFamilyType.Borna.name
     );
   }
 
   /// BASE
-   TextStyle _baseTextStyle = TextStyle(
+   final TextStyle _baseTextStyle = TextStyle(
     color: UiColor().textColor,
     fontWeight: FontWeight.normal,
   );
