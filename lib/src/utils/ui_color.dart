@@ -11,6 +11,7 @@ class UiColor {
   Color brownCard = const Color(0xFFDAD1C5);
   Color green = const Color(0xFFBECFBC);
   Color grey = const Color(0xFFCDC9C6);
+  Color red = const Color(0xFFEA4335);
   Color backgroundButton = const Color(0xFF000000);
 
   //my colors
