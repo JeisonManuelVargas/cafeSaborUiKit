@@ -3,9 +3,42 @@ import 'package:cafe_sabor_ui_kit/src/utils/ui_color.dart';
 import 'package:flutter/material.dart';
 
 class UiButton {
-  Widget formButton(ButtonModel buttonModel) => buttonModel.type == ButtonType.dark
+  Widget formButton(ButtonModel buttonModel) =>
+      buttonModel.type == ButtonType.dark
           ? _DarkButton(buttonModel)
           : _LightButton(buttonModel);
+
+  Widget goBackButton({required Function() onTap}) => _GoBackButton(onTap);
+}
+
+class _GoBackButton extends StatelessWidget {
+  final Function() onTap;
+
+  const _GoBackButton(this.onTap, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.all(8),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: UiColor().backgroundButton,
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(right: 1.5),
+              child: Icon(Icons.arrow_back_ios_new_sharp, color: UiColor().whiteCard, size: 17),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class _DarkButton extends StatelessWidget {
