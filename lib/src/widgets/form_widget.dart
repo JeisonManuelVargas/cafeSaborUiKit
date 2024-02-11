@@ -7,12 +7,14 @@ class UiForm {
     required String label,
     Function(String)? onChange,
     TextInputType? keyboardType,
+    required TextEditingController controller,
     String? Function(String? text)? validator,
   }) =>
       _Input(
         label: label,
         onChange: onChange,
         validator: validator,
+        controller: controller,
         keyboardType: keyboardType,
       );
 
@@ -29,6 +31,7 @@ class _Input extends StatelessWidget {
   final String label;
   final Function(String)? onChange;
   final TextInputType? keyboardType;
+  final TextEditingController controller;
   final String? Function(String? text)? validator;
 
   const _Input({
@@ -37,6 +40,7 @@ class _Input extends StatelessWidget {
     this.validator,
     this.keyboardType,
     required this.label,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -44,6 +48,7 @@ class _Input extends StatelessWidget {
     return TextFormField(
       onChanged: onChange,
       validator: validator,
+      controller: controller,
       keyboardType: keyboardType,
       cursorColor: UiColor().textColor,
       style: TextStyle(
