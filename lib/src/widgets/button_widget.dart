@@ -1,5 +1,6 @@
 import 'package:cafe_sabor_ui_kit/src/models/button_model.dart';
 import 'package:cafe_sabor_ui_kit/src/utils/ui_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UiButton {
@@ -9,12 +10,18 @@ class UiButton {
           : _LightButton(buttonModel);
 
   Widget goBackButton({required Function() onTap}) => _GoBackButton(onTap);
+
+  Widget smallStandardButton({
+    required Function() onTap,
+    required IconData icon,
+  }) =>
+      _SmallStandardButton(onTap: onTap, icon: icon);
 }
 
 class _GoBackButton extends StatelessWidget {
   final Function() onTap;
 
-  const _GoBackButton(this.onTap, {Key? key}) : super(key: key);
+  const _GoBackButton(this.onTap, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +31,48 @@ class _GoBackButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: UiColor().backgroundButton,
             ),
             child: Padding(
-              padding: EdgeInsets.only(right: 1.5),
-              child: Icon(Icons.arrow_back_ios_new_sharp, color: UiColor().whiteCard, size: 17),
+              padding: const EdgeInsets.only(right: 1.5),
+              child: Icon(Icons.arrow_back_ios_new_sharp,
+                  color: UiColor().whiteCard, size: 17),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _SmallStandardButton extends StatelessWidget {
+  final IconData icon;
+  final Function() onTap;
+
+  const _SmallStandardButton(
+      {super.key, required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: UiColor().backgroundButton,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 1.5),
+              child: Icon(icon, color: UiColor().whiteCard, size: 17),
             ),
           )
         ],
