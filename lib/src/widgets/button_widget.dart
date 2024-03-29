@@ -12,10 +12,12 @@ class UiButton {
   Widget goBackButton({required Function() onTap}) => _GoBackButton(onTap);
 
   Widget smallStandardButton({
-    required Function() onTap,
+    double iconSize = 17,
+    double buttonPadding = 8,
     required IconData icon,
+    required Function() onTap,
   }) =>
-      _SmallStandardButton(onTap: onTap, icon: icon);
+      _SmallStandardButton(onTap: onTap, icon: icon,iconSize: iconSize, buttonPadding: buttonPadding,);
 }
 
 class _GoBackButton extends StatelessWidget {
@@ -52,9 +54,16 @@ class _GoBackButton extends StatelessWidget {
 class _SmallStandardButton extends StatelessWidget {
   final IconData icon;
   final Function() onTap;
+  final double iconSize;
+  final double buttonPadding;
 
-  const _SmallStandardButton(
-      {super.key, required this.icon, required this.onTap});
+  const _SmallStandardButton({
+    super.key,
+    required this.icon,
+    required this.onTap,
+    required this.iconSize,
+    required this.buttonPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +73,7 @@ class _SmallStandardButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(buttonPadding),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -72,7 +81,7 @@ class _SmallStandardButton extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(right: 1.5),
-              child: Icon(icon, color: UiColor().whiteCard, size: 17),
+              child: Icon(icon, color: UiColor().whiteCard, size: iconSize),
             ),
           )
         ],
