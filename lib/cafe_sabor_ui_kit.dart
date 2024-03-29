@@ -17,4 +17,5 @@ export 'package:cafe_sabor_ui_kit/src/extension/cafe_text_style_extension.dart';
 abstract class CafeKit {
   static Util util = Util();
   static UiWidget widget = UiWidget();
+  static UiWidget model = UiWidget();
 }
