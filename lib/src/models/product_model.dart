@@ -2,15 +2,18 @@
 
 import 'dart:ui';
 import 'package:cafe_sabor_ui_kit/cafe_sabor_ui_kit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
   final String name;
   final Color color;
   final double price;
   final String description;
+  final DocumentReference? id;
   final List<ShowerProductModel> images;
 
   ProductModel({
+    this.id,
     required this.name,
     required this.color,
     required this.price,
@@ -18,8 +21,8 @@ class ProductModel {
     required this.description,
   });
 
-  factory ProductModel.init() =>
-      ProductModel(
+  factory ProductModel.init() => ProductModel(
+        id: null,
         name: "",
         images: [],
         price: 0.0,
@@ -40,9 +43,11 @@ class ProductModel {
     Color? color,
     double? price,
     String? description,
+    DocumentReference? id,
     List<ShowerProductModel>? images,
   }) =>
       ProductModel(
+        id: id ?? this.id,
         name: name ?? this.name,
         color: color ?? this.color,
         price: price ?? this.price,
