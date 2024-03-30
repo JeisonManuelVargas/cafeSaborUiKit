@@ -27,6 +27,14 @@ class ProductModel {
         color: CafeKit.util.color.green,
       );
 
+  Map<String, dynamic> toJson() => {
+    "name": name,
+    "color": color,
+    "price": price,
+    "description": description,
+    "images": List<dynamic>.from(images.map((x) => x.toJson())),
+  };
+
   ProductModel copyWith({
     String? name,
     Color? color,
