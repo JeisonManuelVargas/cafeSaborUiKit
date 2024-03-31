@@ -6,7 +6,7 @@ enum PositionType {
 
 class ShowerProductModel {
   final String url;
-      final double? left;
+  final double? left;
   final double width;
   final double height;
   final double? right;
@@ -24,14 +24,24 @@ class ShowerProductModel {
   });
 
   Map<String, dynamic> toJson() => {
-    "url": url,
-    "left": left,
-    "width": width,
-    "height": height,
-    "right": right,
-    "bottom": bottom,
-    "positionType": positionType,
-  };
+        "url": url,
+        "left": left,
+        "width": width,
+        "height": height,
+        "right": right,
+        "bottom": bottom,
+        "positionType": positionType,
+      };
+
+  factory ShowerProductModel.fromJson(data) => ShowerProductModel(
+        url: data["url"] ?? "",
+        left: data["left"] ?? 0,
+        width: data["width"] ?? 0,
+        height: data["height"] ?? 0,
+        right: data["right"] ?? 0,
+        bottom: data["bottom"] ?? 0,
+        positionType: data["positionType"],
+      );
 
   ShowerProductModel copyWith({
     String? url,

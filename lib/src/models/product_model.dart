@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 import 'package:cafe_sabor_ui_kit/cafe_sabor_ui_kit.dart';
+import 'package:cafe_sabor_ui_kit/src/utils/ui_color.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
@@ -30,13 +31,22 @@ class ProductModel {
         color: CafeKit.util.color.green,
       );
 
+  factory ProductModel.fromJson(DocumentReference id, data) => ProductModel(
+        id: id,
+        name: data["name"] ?? "",
+        price: data["price"] ?? 0.0,
+        description: data["description"] ?? "",
+        color: data["color"] != null ? Color(data["color"]) : UiColor().textColor,
+        images: List<ShowerProductModel>.from(data["images"].map((x) => ShowerProductModel.fromJson(x))),
+      );
+
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "color": color,
-    "price": price,
-    "description": description,
-    "images": List<dynamic>.from(images.map((x) => x.toJson())),
-  };
+        "name": name,
+        "color": color.value,
+        "price": price,
+        "description": description,
+        "images": List<dynamic>.from(images.map((x) => x.toJson())),
+      };
 
   ProductModel copyWith({
     String? name,
@@ -54,5 +64,4 @@ class ProductModel {
         images: images ?? this.images,
         description: description ?? this.description,
       );
-
 }
