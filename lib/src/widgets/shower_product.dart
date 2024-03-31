@@ -149,7 +149,7 @@ class _DecorationImage extends StatelessWidget {
           ),
         ),
         child: Image(
-          image: AssetImage(element.url),
+          image: NetworkImage(element.url),
           width: MediaQuery.of(context).size.width * element.width,
           height: MediaQuery.of(context).size.height * element.height,
         ),
@@ -188,7 +188,7 @@ class _MainContainer extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fitHeight,
-            image: AssetImage(element.url),
+            image: NetworkImage(element.url),
           ),
         ),
       ),
