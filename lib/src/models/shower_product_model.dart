@@ -35,11 +35,11 @@ class ShowerProductModel {
 
   factory ShowerProductModel.fromJson(data) => ShowerProductModel(
         url: data["url"] ?? "",
-        left: data["left"] ?? 0,
-        width: data["width"] ?? 0,
-        height: data["height"] ?? 0,
-        right: data["right"] ?? 0,
-        bottom: data["bottom"] ?? 0,
+        left: data["left"] ?? 0.0,
+        width: data["width"] ?? 0.0,
+        height: data["height"] ?? 0.0,
+        right: data["right"] ?? 0.0,
+        bottom: data["bottom"] ?? 0.0,
         positionType: data["positionType"] != null
             ? _generatePositionType(data["positionType"])
             : PositionType.BACK,

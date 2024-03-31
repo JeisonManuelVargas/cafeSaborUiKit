@@ -29,14 +29,14 @@ class UserModel {
 
   factory UserModel.fromJson(json, DocumentReference id) => UserModel(
     id: id,
-    role: json["role"],
-    name: json["name"],
-    email: json["email"],
-    image: json["image"],
-    phone: json["phone"],
-    password: json["password"],
-    language: json["language"],
-    lastName: json["last_name"],
+    role: json["role"]??"",
+    name: json["name"]??"",
+    email: json["email"]??"",
+    image: json["image"]??"",
+    phone: json["phone"]??"",
+    password: json["password"]??"",
+    language: json["language"]??"",
+    lastName: json["last_name"]??"",
     dateCreate: json["dateCreate"].toDate(),
     address: List<AddressModel>.from(json["address"].map((x) => AddressModel.fromJson(x))),
   );
