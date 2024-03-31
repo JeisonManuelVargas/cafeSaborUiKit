@@ -30,7 +30,7 @@ class ShowerProductModel {
         "height": height,
         "right": right,
         "bottom": bottom,
-        "positionType": positionType,
+        "positionType": positionType.name,
       };
 
   factory ShowerProductModel.fromJson(data) => ShowerProductModel(
@@ -40,7 +40,9 @@ class ShowerProductModel {
         height: data["height"] ?? 0,
         right: data["right"] ?? 0,
         bottom: data["bottom"] ?? 0,
-        positionType: data["positionType"],
+        positionType: data["positionType"] != null
+            ? _generatePositionType(data["positionType"])
+            : PositionType.BACK,
       );
 
   ShowerProductModel copyWith({
@@ -61,4 +63,11 @@ class ShowerProductModel {
         bottom: bottom ?? this.bottom,
         positionType: positionType ?? this.positionType,
       );
+}
+
+PositionType _generatePositionType(String name) {
+  if (name == PositionType.BACK.name) return PositionType.BACK;
+  if (name == PositionType.MAIN.name) return PositionType.MAIN;
+  if (name == PositionType.FRONT.name) return PositionType.FRONT;
+  return PositionType.BACK;
 }
