@@ -150,8 +150,8 @@ class _DecorationImage extends StatelessWidget {
         ),
         child: Image(
           image: NetworkImage(element.url),
-          width: MediaQuery.of(context).size.width * element.width,
-          height: MediaQuery.of(context).size.height * element.height,
+          width: element.width.floorToDouble(),
+          height: element.height.floorToDouble(),
         ),
       ),
     );

@@ -7,8 +7,8 @@ enum PositionType {
 class ShowerProductModel {
   final String url;
   final double? left;
-  final double width;
-  final double height;
+  final int width;
+  final int height;
   final double? right;
   final double? bottom;
   final PositionType positionType;
@@ -48,8 +48,8 @@ class ShowerProductModel {
   ShowerProductModel copyWith({
     String? url,
     double? left,
-    double? width,
-    double? height,
+    int? width,
+    int? height,
     double? right,
     double? bottom,
     PositionType? positionType,
