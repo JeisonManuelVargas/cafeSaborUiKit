@@ -35,7 +35,6 @@ class _ShowerProductWidget extends StatefulWidget {
   final List<ShowerProductModel> images;
 
   const _ShowerProductWidget({
-    Key? key,
     this.onTap,
     required this.images,
     required this.marginTopMain,
@@ -43,7 +42,7 @@ class _ShowerProductWidget extends StatefulWidget {
     required this.backgroundColor,
     required this.heightBackground,
     required this.disableAnimation,
-  }) : super(key: key);
+  });
 
   @override
   State<_ShowerProductWidget> createState() => _ShowerProductWidgetState();
@@ -123,10 +122,9 @@ class _DecorationImage extends StatelessWidget {
   final ShowerProductModel element;
 
   const _DecorationImage({
-    Key? key,
     required this.element,
     required this.disableAnimation,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -170,10 +168,9 @@ class _MainContainer extends StatelessWidget {
   final ShowerProductModel element;
 
   const _MainContainer({
-    Key? key,
     required this.element,
     required this.marginTopMain,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +199,6 @@ class _GenerateBody extends StatelessWidget {
   final Widget Function(Widget) bodyBuild;
 
   const _GenerateBody({
-    super.key,
     required this.child,
     required this.bodyBuild,
     required this.disableAnimation,
