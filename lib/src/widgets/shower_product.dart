@@ -131,6 +131,8 @@ class _DecorationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: double.infinity,
+      width: double.infinity,
       color: Colors.green,
       child: Positioned(
           left: element.left != null ? 1 : null,
