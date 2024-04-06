@@ -131,14 +131,9 @@ class _DecorationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left:
-          element.left != null ? generateWidth(context) * element.left! : null,
-      right: element.right != null
-          ? generateWidth(context) * element.right!
-          : null,
-      bottom: element.bottom != null
-          ? MediaQuery.of(context).size.height * element.bottom!
-          : null,
+      left: element.left != null ? generateWidth(context) * element.left! : null,
+      right: element.right != null ? generateWidth(context) * element.right! : null,
+      bottom: element.bottom != null ? MediaQuery.of(context).size.height * element.bottom! : null,
       child: _GenerateBody(
         disableAnimation: disableAnimation,
         bodyBuild: (Widget child) => CustomAnimateContainer(
