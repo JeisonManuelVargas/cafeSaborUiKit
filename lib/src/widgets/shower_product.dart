@@ -131,7 +131,7 @@ class _DecorationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: element.left != null ? 1 / 10: null,
+      left: element.left != null ? 1 : null,
       right: element.right != null ? (_generateWidth(context) * element.right!) / 10 : null,
       bottom: element.bottom != null ? (MediaQuery.of(context).size.height / 2 * element.bottom!) / 10  : null,
       child: _GenerateBody(
