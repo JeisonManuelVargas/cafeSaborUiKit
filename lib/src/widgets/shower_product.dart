@@ -147,7 +147,9 @@ class _DecorationImage extends StatelessWidget {
           ),
         ),
         child: Container(
-          color: Colors.red,
+          width: element.width.floorToDouble(),
+          height: element.height.floorToDouble(),
+          color: Colors.green,
           child: Image(
             image: NetworkImage(element.url),
           ),
