@@ -135,12 +135,15 @@ class _DecorationImage extends StatelessWidget {
         bodyBuild: (Widget child) => CustomAnimateContainer(
           fromAnimationModel: FromAnimationModel(
             fromAnimation: handledGenerateFromAnimation(element),
-            child: Positioned(
-              left:  1, /*
+            child: Container(
+              color: Colors.red,
+              child: Positioned(
+                left:  1, /*
               right: element.right != null ? (_generateWidth(context) * element.right!) / 10 : null,*/
-              child: Container(
-                color: Colors.lightBlue,
-                child: child,
+                child: Container(
+                  color: Colors.lightBlue,
+                  child: child,
+                ),
               ),
             ),
           ),
