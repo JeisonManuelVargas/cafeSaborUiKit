@@ -130,25 +130,28 @@ class _DecorationImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: element.left != null ? 1 : null,
-      right: element.right != null ? (_generateWidth(context) * element.right!) / 10 : null,
-      bottom: element.bottom != null ? (MediaQuery.of(context).size.height / 2 * element.bottom!) / 10  : null,
-      child: _GenerateBody(
-        disableAnimation: disableAnimation,
-        bodyBuild: (Widget child) => CustomAnimateContainer(
-          fromAnimationModel: FromAnimationModel(
-            fromAnimation: handledGenerateFromAnimation(element),
-            child: child,
+    return Container(
+      color: Colors.green,
+      child: Positioned(
+          left: element.left != null ? 1 : null,
+          right: element.right != null ? (_generateWidth(context) * element.right!) / 10 : null,
+          bottom: element.bottom != null ? (MediaQuery.of(context).size.height / 2 * element.bottom!) / 10  : null,
+          child: _GenerateBody(
+            disableAnimation: disableAnimation,
+            bodyBuild: (Widget child) => CustomAnimateContainer(
+              fromAnimationModel: FromAnimationModel(
+                fromAnimation: handledGenerateFromAnimation(element),
+                child: child,
+              ),
+            ),
+            child: Image(
+              image: NetworkImage(element.url),
+              width: element.width.floorToDouble(),
+              height: element.height.floorToDouble(),
+            ),
           ),
-        ),
-        child: Image(
-          image: NetworkImage(element.url),
-          width: element.width.floorToDouble(),
-          height: element.height.floorToDouble(),
-        ),
-      ),
-    );
+
+    ));
   }
 
   double _generateWidth(BuildContext context) =>
