@@ -150,7 +150,6 @@ class _DecorationImage extends StatelessWidget {
           color: Colors.lightBlue,
           child: Image(
             image: NetworkImage(element.url),
-            width: element.width.floorToDouble(),
             height: element.height.floorToDouble(),
           ),
         ),
