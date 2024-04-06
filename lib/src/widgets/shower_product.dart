@@ -150,7 +150,7 @@ class _DecorationImage extends StatelessWidget {
           width: element.width.floorToDouble(),
           height: element.height.floorToDouble(),
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: Colors.red,
             image: DecorationImage(image: NetworkImage(element.url)),
           ),
         ),
