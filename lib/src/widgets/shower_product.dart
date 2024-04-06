@@ -136,8 +136,8 @@ class _DecorationImage extends StatelessWidget {
           fromAnimationModel: FromAnimationModel(
             fromAnimation: handledGenerateFromAnimation(element),
             child: Positioned(
-              left: element.left != null ? 10 : null,
-              right: element.right != null ? (_generateWidth(context) * element.right!) / 10 : null,
+              left:  1, /*
+              right: element.right != null ? (_generateWidth(context) * element.right!) / 10 : null,*/
               child: Container(
                 color: Colors.lightBlue,
                 child: child,
