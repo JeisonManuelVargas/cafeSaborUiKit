@@ -35,9 +35,9 @@ class ShowerProductModel {
 
   factory ShowerProductModel.fromJson(data) => ShowerProductModel(
         url: data["url"] ?? "",
+        width: data["width"] ?? 0,
+        height: data["height"] ?? 0,
         left: data["left"] != null ? data["left"].toDouble() : 0.0,
-        width: data["width"] != null ? data["width"].toDouble() : 0.0,
-        height: data["height"] != null ? data["height"].toDouble() : 0.0,
         right: data["right"] != null ? data["right"].toDouble() : 0.0,
         bottom: data["bottom"] != null ? data["bottom"].toDouble() : 0.0,
         positionType: data["positionType"] != null
