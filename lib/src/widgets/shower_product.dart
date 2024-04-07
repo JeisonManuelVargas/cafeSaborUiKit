@@ -129,13 +129,13 @@ class _DecorationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: element.left != null
+      left: element.left != 0
           ? (_generateWidth(context) * element.left!) / 10
           : null,
-      right: element.right != null
+      right: element.right != 0
           ? (_generateWidth(context) * element.right!) / 10
           : null,
-      bottom: element.bottom != null
+      bottom: element.bottom != 0
           ? (MediaQuery.of(context).size.height / 2 * element.bottom!) / 10
           : null,
       child: _GenerateBody(
@@ -146,13 +146,10 @@ class _DecorationImage extends StatelessWidget {
             child: child,
           ),
         ),
-        child: Container(
+        child: Image(
+          image: NetworkImage(element.url),
           width: element.width.floorToDouble(),
           height: element.height.floorToDouble(),
-          decoration: BoxDecoration(
-            color: Colors.red,
-            image: DecorationImage(image: NetworkImage(element.url)),
-          ),
         ),
       ),
     );
