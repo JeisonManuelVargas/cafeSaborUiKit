@@ -34,7 +34,7 @@ class ProductModel {
   factory ProductModel.fromJson(DocumentReference id, data) => ProductModel(
         id: id,
         name: data["name"] ?? "",
-        price: data["price"] ?? 0.0,
+        price: data["price"].toDouble() ?? 0.0,
         description: data["description"] ?? "",
         color: data["color"] != null ? Color(data["color"]) : UiColor().textColor,
         images: List<ShowerProductModel>.from(data["images"].map((x) => ShowerProductModel.fromJson(x))),
