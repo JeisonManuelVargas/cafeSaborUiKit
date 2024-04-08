@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ProductModel {
   final String name;
   final Color color;
+  final bool enabled;
   final double price;
   final String description;
   final DocumentReference? id;
@@ -19,6 +20,7 @@ class ProductModel {
     required this.color,
     required this.price,
     required this.images,
+    required this.enabled,
     required this.description,
   });
 
@@ -27,6 +29,7 @@ class ProductModel {
         name: "",
         images: [],
         price: 0.0,
+        enabled: true,
         description: "",
         color: CafeKit.util.color.green,
       );
@@ -34,6 +37,7 @@ class ProductModel {
   factory ProductModel.fromJson(DocumentReference id, data) => ProductModel(
         id: id,
         name: data["name"] ?? "",
+        enabled: data["enabled"] ?? true,
         price: data["price"].toDouble() ?? 0.0,
         description: data["description"] ?? "",
         color: data["color"] != null ? Color(data["color"]) : UiColor().textColor,
@@ -42,8 +46,9 @@ class ProductModel {
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "color": color.value,
         "price": price,
+        "enabled": enabled,
+        "color": color.value,
         "description": description,
         "images": List<dynamic>.from(images.map((x) => x.toJson())),
       };
@@ -51,6 +56,7 @@ class ProductModel {
   ProductModel copyWith({
     String? name,
     Color? color,
+    bool? enabled,
     double? price,
     String? description,
     DocumentReference? id,
@@ -62,6 +68,7 @@ class ProductModel {
         color: color ?? this.color,
         price: price ?? this.price,
         images: images ?? this.images,
+        enabled: enabled ?? this.enabled,
         description: description ?? this.description,
       );
 }
