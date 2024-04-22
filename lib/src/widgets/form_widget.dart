@@ -18,13 +18,29 @@ class UiForm {
         keyboardType: keyboardType,
       );
 
+  Widget PasswordInput({
+    required String label,
+    Function(String)? onChange,
+    TextInputType? keyboardType,
+    required TextEditingController controller,
+    String? Function(String? text)? validator,
+  }) =>
+      _PasswordInput(
+        label: label,
+        onChange: onChange,
+        validator: validator,
+        controller: controller,
+        keyboardType: keyboardType,
+      );
+
   Widget inputValidateCode({
     required int amountIndex,
     required Function() callBack,
-  }) => _InputValidateCode(
-    callBack: callBack,
-    amountIndex: amountIndex,
-  );
+  }) =>
+      _InputValidateCode(
+        callBack: callBack,
+        amountIndex: amountIndex,
+      );
 }
 
 class _Input extends StatelessWidget {
@@ -67,7 +83,6 @@ class _Input extends StatelessWidget {
     );
   }
 }
-
 
 //**********************************************
 //**********************************************
@@ -151,9 +166,7 @@ class _CustomInput extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: focus.hasFocus
-            ? UiColor().lightYellow
-            : UiColor().whiteCard,
+        color: focus.hasFocus ? UiColor().lightYellow : UiColor().whiteCard,
       ),
       child: TextFormField(
         maxLength: 1,
@@ -177,3 +190,62 @@ class _CustomInput extends StatelessWidget {
   }
 }
 
+class _PasswordInput extends StatefulWidget {
+  final String label;
+  final Function(String)? onChange;
+  final TextInputType? keyboardType;
+  final TextEditingController controller;
+  final String? Function(String? text)? validator;
+
+  const _PasswordInput({
+    super.key,
+    this.onChange,
+    this.validator,
+    this.keyboardType,
+    required this.label,
+    required this.controller,
+  });
+
+  @override
+  State<_PasswordInput> createState() => __PasswordInputState();
+}
+
+class __PasswordInputState extends State<_PasswordInput> {
+  late bool _isObscureText;
+
+  void _changeObscureTextState() {
+    setState(() => _isObscureText = !_isObscureText);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      onChanged: widget.onChange,
+      validator: widget.validator,
+      controller: widget.controller,
+      keyboardType: widget.keyboardType,
+      cursorColor: UiColor().textColor,
+      obscureText: _isObscureText,
+      style: TextStyle(
+        fontSize: 14,
+        color: UiColor().textColor,
+        fontWeight: FontWeight.w500,
+      ),
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+          icon: Icon(
+            _isObscureText ? Icons.visibility : Icons.visibility_off,
+            color: UiColor().textColor,
+          ),
+          onPressed: _changeObscureTextState,
+        ),
+        labelText: widget.label,
+        labelStyle: TextStyle(
+          fontSize: 14,
+          color: UiColor().textColor,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+}
