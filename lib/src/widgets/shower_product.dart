@@ -129,15 +129,9 @@ class _DecorationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: element.left != 0
-          ? (_generateWidth(context) * element.left!) / 10
-          : null,
-      right: element.right != 0
-          ? (_generateWidth(context) * element.right!) / 10
-          : null,
-      bottom: element.bottom != 0
-          ? (MediaQuery.of(context).size.height / 2 * element.bottom!) / 10
-          : null,
+      left: element.left != 0 ? (_generateWidth(context) * element.left!) / 10 : null,
+      right: element.right != 0 ? (_generateWidth(context) * element.right!) / 10 : null,
+      bottom: element.bottom != 0 ? (MediaQuery.of(context).size.height / 2 * element.bottom!) / 10 : null,
       child: _GenerateBody(
         disableAnimation: disableAnimation,
         bodyBuild: (Widget child) => CustomAnimateContainer(
@@ -159,9 +153,9 @@ class _DecorationImage extends StatelessWidget {
       MediaQuery.of(context).size.width / 2;
 
   FromAnimation handledGenerateFromAnimation(ShowerProductModel element) {
-    if (element.right != null) return FromAnimation.fromRight;
-    if (element.left != null) return FromAnimation.fromLeft;
-    if (element.bottom != null) return FromAnimation.fromDown;
+    if (element.right != null && element.right != 0) return FromAnimation.fromRight;
+    if (element.left != null && element.left != 0) return FromAnimation.fromLeft;
+    if (element.bottom != null && element.bottom != 0) return FromAnimation.fromDown;
     return FromAnimation.fromDown;
   }
 }
