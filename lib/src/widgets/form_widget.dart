@@ -210,7 +210,7 @@ class _PasswordInput extends StatefulWidget {
 }
 
 class __PasswordInputState extends State<_PasswordInput> {
-  late bool _isObscureText;
+  late bool _isObscureText = true;
 
   void _changeObscureTextState() {
     setState(() => _isObscureText = !_isObscureText);
