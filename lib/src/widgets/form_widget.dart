@@ -18,7 +18,7 @@ class UiForm {
         keyboardType: keyboardType,
       );
 
-  Widget PasswordInput({
+  Widget passwordInput({
     required String label,
     Function(String)? onChange,
     TextInputType? keyboardType,
