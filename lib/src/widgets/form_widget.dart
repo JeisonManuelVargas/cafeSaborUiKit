@@ -198,7 +198,6 @@ class _PasswordInput extends StatefulWidget {
   final String? Function(String? text)? validator;
 
   const _PasswordInput({
-    super.key,
     this.onChange,
     this.validator,
     this.keyboardType,
