@@ -174,8 +174,8 @@ class _MainContainer extends StatelessWidget {
     return Hero(
       tag: element.url,
       child: Container(
-        width: MediaQuery.of(context).size.width * element.width,
-        height: MediaQuery.of(context).size.height * element.height,
+        width: MediaQuery.of(context).size.width * 0.5,
+        height: MediaQuery.of(context).size.height * 0.5,
         margin: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * marginTopMain,
         ),
