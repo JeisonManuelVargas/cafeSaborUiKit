@@ -18,6 +18,7 @@ class AppThere {
             borderSide:  BorderSide(color: UiColor().textColor),
           ),
         ),
+        dividerTheme: DividerThemeData(color: UiColor().backgroundButton),
         appBarTheme:  AppBarTheme(color: UiColor().background),
         scaffoldBackgroundColor: UiColor().background,
         colorScheme: const ColorScheme.dark(
