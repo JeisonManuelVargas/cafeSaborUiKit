@@ -6,20 +6,23 @@ class AppThere {
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TextStyle(color: UiColor().textColor),
           enabledBorder: OutlineInputBorder(
-            borderSide:  BorderSide(color: UiColor().textColor),
+            borderSide: BorderSide(color: UiColor().textColor),
             borderRadius: BorderRadius.circular(7.0),
           ),
           border: OutlineInputBorder(
-            borderSide:  BorderSide(color: UiColor().textColor),
+            borderSide: BorderSide(color: UiColor().textColor),
             borderRadius: BorderRadius.circular(7.0),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(7.0),
-            borderSide:  BorderSide(color: UiColor().textColor),
+            borderSide: BorderSide(color: UiColor().textColor),
           ),
         ),
-        dividerTheme: DividerThemeData(color: UiColor().backgroundButton),
-        appBarTheme:  AppBarTheme(color: UiColor().background),
+        dividerTheme: DividerThemeData(
+          color: UiColor().backgroundButton,
+          thickness: 0.4,
+        ),
+        appBarTheme: AppBarTheme(color: UiColor().background),
         scaffoldBackgroundColor: UiColor().background,
         colorScheme: const ColorScheme.dark(
           primary: Colors.white,
