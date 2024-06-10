@@ -18,6 +18,23 @@ class UiForm {
         keyboardType: keyboardType,
       );
 
+  Widget dropDownInput<T>({
+    required String label,
+    required List<T> listElement,
+    required Function(String) onChange,
+    required TextEditingController controller,
+    String? Function(String? text)? validator,
+    required Widget Function(BuildContext, T) dropDownBuild,
+  }) =>
+      _DropDownInput<T>(
+        label: label,
+        onChange: onChange,
+        validate: validator,
+        controller: controller,
+        listElement: listElement,
+        dropDownBuild: dropDownBuild,
+      );
+
   Widget passwordInput({
     required String label,
     Function(String)? onChange,
@@ -246,5 +263,81 @@ class __PasswordInputState extends State<_PasswordInput> {
         ),
       ),
     );
+  }
+}
+
+//**********************************************
+//**********************************************
+//**********************************************
+//**********************************************
+//dropDown input
+//**********************************************
+//**********************************************
+//**********************************************
+//**********************************************
+
+class _DropDownInput<T> extends StatelessWidget {
+  final String label;
+  final List<T> listElement;
+  final Function(String) onChange;
+  final TextEditingController controller;
+  final String? Function(String? text)? validate;
+  final Widget Function(BuildContext, T) dropDownBuild;
+
+  const _DropDownInput({
+    super.key,
+    required this.label,
+    required this.onChange,
+    required this.validate,
+    required this.controller,
+    required this.listElement,
+    required this.dropDownBuild,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextFormField(
+          validator: validate,
+          onChanged: onChange,
+          controller: controller,
+          decoration: InputDecoration(
+            labelText: label,
+            labelStyle: TextStyle(
+              fontSize: 14,
+              color: UiColor().textColor,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        AnimatedContainer(
+          alignment: Alignment.center,
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: UiColor().backgroundButton),
+          ),
+          height: generateHeightSize(context, listElement.length),
+          child: ListView(
+            padding: EdgeInsets.symmetric(
+              vertical: MediaQuery.of(context).size.height * 0.01,
+              horizontal: MediaQuery.of(context).size.width * 0.06,
+            ),
+            children: List.generate(
+              listElement.length,
+              (index) => dropDownBuild(context, listElement[index]),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  double generateHeightSize(BuildContext context, int lengthList){
+    if(lengthList >= 1 && lengthList < 3) return MediaQuery.of(context).size.height * 0.05;
+    if(lengthList >= 3 && lengthList < 5) return MediaQuery.of(context).size.height * 0.1;
+    if(lengthList >= 5 && lengthList < 10) return MediaQuery.of(context).size.height * 0.15;
+    return 0;
   }
 }
