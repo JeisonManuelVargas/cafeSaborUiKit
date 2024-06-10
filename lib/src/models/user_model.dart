@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geoflutterfire2/geoflutterfire2.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UserModel {
   String role;
@@ -28,55 +30,55 @@ class UserModel {
   });
 
   factory UserModel.fromJson(json, DocumentReference id) => UserModel(
-    id: id,
-    role: json["role"]??"",
-    name: json["name"]??"",
-    email: json["email"]??"",
-    image: json["image"]??"",
-    phone: json["phone"]??"",
-    password: json["password"]??"",
-    language: json["language"]??"",
-    lastName: json["last_name"]??"",
-    dateCreate: json["dateCreate"].toDate(),
-    address: List<AddressModel>.from(json["address"].map((x) => AddressModel.fromJson(x))),
-  );
+        id: id,
+        role: json["role"] ?? "",
+        name: json["name"] ?? "",
+        email: json["email"] ?? "",
+        image: json["image"] ?? "",
+        phone: json["phone"] ?? "",
+        password: json["password"] ?? "",
+        language: json["language"] ?? "",
+        lastName: json["last_name"] ?? "",
+        dateCreate: json["dateCreate"].toDate(),
+        address: List<AddressModel>.from(
+            json["address"].map((x) => AddressModel.fromJson(x))),
+      );
 
   factory UserModel.init() => UserModel(
-    role: "",
-    name: "",
-    image: "",
-    email: "",
-    phone: "",
-    password: "",
-    lastName: "",
-    language: "",
-    dateCreate: DateTime.now(),
-    address: [AddressModel.init()],
-  );
+        role: "",
+        name: "",
+        image: "",
+        email: "",
+        phone: "",
+        password: "",
+        lastName: "",
+        language: "",
+        dateCreate: DateTime.now(),
+        address: [AddressModel.init()],
+      );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "role": role,
-    "email": email,
-    "image": image,
-    "phone": phone,
-    "password": password,
-    "language": language,
-    "last_name": lastName,
-    "dateCreate": dateCreate,
-    "address": List<dynamic>.from(address.map((x) => x.toJson())),
-  };
+        "name": name,
+        "role": role,
+        "email": email,
+        "image": image,
+        "phone": phone,
+        "password": password,
+        "language": language,
+        "last_name": lastName,
+        "dateCreate": dateCreate,
+        "address": List<dynamic>.from(address.map((x) => x.toJson())),
+      };
 
   Map<String, dynamic> toJsonUpdate() => {
-    "role": role,
-    "name": name,
-    "email": email,
-    "image": image,
-    "phone": phone,
-    "language": language,
-    "last_name": lastName,
-  };
-
+        "role": role,
+        "name": name,
+        "email": email,
+        "image": image,
+        "phone": phone,
+        "language": language,
+        "last_name": lastName,
+      };
 
   UserModel copyWith({
     String? role,
@@ -107,47 +109,46 @@ class UserModel {
 }
 
 class AddressModel {
-  String city;
-  String state;
-  String country;
   String address;
-  dynamic position;
+  LatLng position;
   DateTime dateCreate;
 
   AddressModel({
-    required this.city,
-    required this.state,
-    required this.country,
     required this.address,
     required this.position,
     required this.dateCreate,
   });
 
-  factory AddressModel.fromJson(Map<String, dynamic> json) => AddressModel(
-    city: json["city"],
-    state: json["state"],
-    address: json["address"],
-    country: json["country"],
-    position: json["position"],
-    dateCreate: json["dateCreate"].toDate(),
-  );
+  factory AddressModel.fromJson(Map<String, dynamic> json) {
+    double latitude = json["position"]["geopoint"].latitude;
+    double longitude = json["position"]["geopoint"].longitude;
 
+    final latLng = LatLng(latitude, longitude);
+
+    return AddressModel(
+      position: latLng,
+      address: json["address"],
+      dateCreate: json["dateCreate"].toDate(),
+    );
+  }
 
   factory AddressModel.init() => AddressModel(
-    city: "",
-    state: "",
-    address: "",
-    country: "",
-    position: "",
-    dateCreate: DateTime.now(),
-  );
+        address: "",
+        dateCreate: DateTime.now(),
+        position: const LatLng(0, 0),
+      );
 
-  Map<String, dynamic> toJson() => {
-    "city": city,
-    "state": state,
-    "address": address,
-    "country": country,
-    "position": position,
-    "dateCreate": dateCreate,
-  };
+  Map<String, dynamic> toJson() {
+    final geo = GeoFlutterFire();
+    final getFire = geo.point(
+      latitude: position.latitude,
+      longitude: position.longitude,
+    );
+
+    return {
+      "address": address,
+      "dateCreate": dateCreate,
+      "position": getFire.data,
+    };
+  }
 }
