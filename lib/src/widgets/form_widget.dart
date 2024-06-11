@@ -302,6 +302,11 @@ class _DropDownInput<T> extends StatelessWidget {
           validator: validate,
           onChanged: onChange,
           controller: controller,
+          style: TextStyle(
+            fontSize: 14,
+            color: UiColor().textColor,
+            fontWeight: FontWeight.w500,
+          ),
           decoration: InputDecoration(
             labelText: label,
             labelStyle: TextStyle(
