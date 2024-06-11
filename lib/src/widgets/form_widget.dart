@@ -340,7 +340,7 @@ class _DropDownInput<T> extends StatelessWidget {
   }
 
   double generateHeightSize(BuildContext context, int lengthList){
-    if(lengthList >= 1 && lengthList < 3) return MediaQuery.of(context).size.height * 0.01;
+    if(lengthList >= 1 && lengthList < 3) return MediaQuery.of(context).size.height * 0.1;
     if(lengthList >= 3 && lengthList < 5) return MediaQuery.of(context).size.height * 0.15;
     if(lengthList >= 5 && lengthList < 10) return MediaQuery.of(context).size.height * 0.2;
     return 0;
