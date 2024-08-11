@@ -129,9 +129,9 @@ class AddressModel {
 
     return AddressModel(
       position: latLng,
-      address: json["address"],
+      address: json["address"]??"",
       dateCreate: json["dateCreate"].toDate(),
-      addressDescription: json["addressDescription"],
+      addressDescription: json["addressDescription"]??"",
     );
   }
 
