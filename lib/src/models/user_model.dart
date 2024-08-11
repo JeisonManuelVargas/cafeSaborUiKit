@@ -74,10 +74,10 @@ class UserModel {
         "role": role,
         "name": name,
         "email": email,
-        "image": image,
         "phone": phone,
         "language": language,
         "last_name": lastName,
+        "address": List<dynamic>.from(address.map((x) => x.toJson())),
       };
 
   UserModel copyWith({
@@ -129,9 +129,9 @@ class AddressModel {
 
     return AddressModel(
       position: latLng,
-      address: json["address"]??"",
+      address: json["address"] ?? "",
       dateCreate: json["dateCreate"].toDate(),
-      addressDescription: json["addressDescription"]??"",
+      addressDescription: json["addressDescription"] ?? "",
     );
   }
 
