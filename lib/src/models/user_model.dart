@@ -54,7 +54,7 @@ class UserModel {
         lastName: "",
         language: "",
         dateCreate: DateTime.now(),
-        address: [AddressModel.init()],
+        address: [],
       );
 
   Map<String, dynamic> toJson() => {
