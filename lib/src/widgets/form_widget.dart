@@ -61,6 +61,7 @@ class UiForm {
 }
 
 class _Input extends StatelessWidget {
+  final int? maxLine;
   final String label;
   final Function(String)? onChange;
   final TextInputType? keyboardType;
@@ -68,17 +69,18 @@ class _Input extends StatelessWidget {
   final String? Function(String? text)? validator;
 
   const _Input({
-    Key? key,
+    this.maxLine,
     this.onChange,
     this.validator,
     this.keyboardType,
     required this.label,
     required this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLine,
       onChanged: onChange,
       validator: validator,
       controller: controller,
@@ -90,6 +92,7 @@ class _Input extends StatelessWidget {
         fontWeight: FontWeight.w500,
       ),
       decoration: InputDecoration(
+        counterText: '',
         labelText: label,
         labelStyle: TextStyle(
           fontSize: 14,
@@ -339,10 +342,13 @@ class _DropDownInput<T> extends StatelessWidget {
     );
   }
 
-  double generateHeightSize(BuildContext context, int lengthList){
-    if(lengthList >= 1 && lengthList < 3) return MediaQuery.of(context).size.height * 0.1;
-    if(lengthList >= 3 && lengthList < 5) return MediaQuery.of(context).size.height * 0.15;
-    if(lengthList >= 5 && lengthList < 10) return MediaQuery.of(context).size.height * 0.2;
+  double generateHeightSize(BuildContext context, int lengthList) {
+    if (lengthList >= 1 && lengthList < 3)
+      return MediaQuery.of(context).size.height * 0.1;
+    if (lengthList >= 3 && lengthList < 5)
+      return MediaQuery.of(context).size.height * 0.15;
+    if (lengthList >= 5 && lengthList < 10)
+      return MediaQuery.of(context).size.height * 0.2;
     return 0;
   }
 }
