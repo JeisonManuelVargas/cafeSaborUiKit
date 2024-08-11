@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class UiForm {
   Widget input({
+    int? maxLine,
     required String label,
     Function(String)? onChange,
     TextInputType? keyboardType,
@@ -12,6 +13,7 @@ class UiForm {
   }) =>
       _Input(
         label: label,
+        maxLine: maxLine,
         onChange: onChange,
         validator: validator,
         controller: controller,
