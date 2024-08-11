@@ -112,11 +112,13 @@ class AddressModel {
   String address;
   LatLng position;
   DateTime dateCreate;
+  String addressDescription;
 
   AddressModel({
     required this.address,
     required this.position,
     required this.dateCreate,
+    required this.addressDescription,
   });
 
   factory AddressModel.fromJson(Map<String, dynamic> json) {
@@ -129,11 +131,13 @@ class AddressModel {
       position: latLng,
       address: json["address"],
       dateCreate: json["dateCreate"].toDate(),
+      addressDescription: json["addressDescription"],
     );
   }
 
   factory AddressModel.init() => AddressModel(
         address: "",
+        addressDescription: "",
         dateCreate: DateTime.now(),
         position: const LatLng(0, 0),
       );
@@ -149,6 +153,7 @@ class AddressModel {
       "address": address,
       "dateCreate": dateCreate,
       "position": getFire.data,
+      "addressDescription": addressDescription,
     };
   }
 }
