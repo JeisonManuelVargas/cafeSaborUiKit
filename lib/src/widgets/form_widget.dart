@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 class UiForm {
   Widget input({
     int? maxLine,
+    int? maxLength,
     required String label,
     Function(String)? onChange,
     TextInputType? keyboardType,
@@ -17,6 +18,7 @@ class UiForm {
         label: label,
         maxLine: maxLine,
         onChange: onChange,
+        maxLength: maxLength,
         validator: validator,
         controller: controller,
         keyboardType: keyboardType,
@@ -68,6 +70,7 @@ class UiForm {
 class _Input extends StatelessWidget {
   final int? maxLine;
   final String label;
+  final int? maxLength;
   final Function(String)? onChange;
   final TextInputType? keyboardType;
   final TextEditingController controller;
@@ -78,6 +81,7 @@ class _Input extends StatelessWidget {
     this.maxLine,
     this.onChange,
     this.validator,
+    this.maxLength,
     this.keyboardType,
     required this.label,
     this.inputFormatters,
@@ -89,6 +93,7 @@ class _Input extends StatelessWidget {
     return TextFormField(
       maxLines: maxLine,
       onChanged: onChange,
+      maxLength: maxLength,
       validator: validator,
       controller: controller,
       keyboardType: keyboardType,
