@@ -1,6 +1,7 @@
 import 'package:cafe_sabor_ui_kit/src/utils/text_style.dart';
 import 'package:cafe_sabor_ui_kit/src/utils/ui_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class UiForm {
   Widget input({
@@ -8,6 +9,7 @@ class UiForm {
     required String label,
     Function(String)? onChange,
     TextInputType? keyboardType,
+    List<TextInputFormatter>? inputFormatters,
     required TextEditingController controller,
     String? Function(String? text)? validator,
   }) =>
@@ -18,6 +20,7 @@ class UiForm {
         validator: validator,
         controller: controller,
         keyboardType: keyboardType,
+        inputFormatters: inputFormatters,
       );
 
   Widget dropDownInput<T>({
@@ -68,6 +71,7 @@ class _Input extends StatelessWidget {
   final Function(String)? onChange;
   final TextInputType? keyboardType;
   final TextEditingController controller;
+  final List<TextInputFormatter>? inputFormatters;
   final String? Function(String? text)? validator;
 
   const _Input({
@@ -76,6 +80,7 @@ class _Input extends StatelessWidget {
     this.validator,
     this.keyboardType,
     required this.label,
+    this.inputFormatters,
     required this.controller,
   });
 
@@ -87,6 +92,7 @@ class _Input extends StatelessWidget {
       validator: validator,
       controller: controller,
       keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
       cursorColor: UiColor().textColor,
       style: TextStyle(
         fontSize: 14,
