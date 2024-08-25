@@ -45,8 +45,8 @@ class ProductModel {
         description: data["description"] ?? "",
         color: data["color"] != null ? Color(data["color"]) : UiColor().textColor,
         price: List<PriceModel>.from(data["price"].map((x) => PriceModel.fromJson(x))),
-        favoriteUsers: List<DocumentReference>.from(data["favorite_users"].map((x) => x)),
         images: List<ShowerProductModel>.from(data["images"].map((x) => ShowerProductModel.fromJson(x))),
+        favoriteUsers: data["favorite_users"] != null ? List<DocumentReference>.from(data["favorite_users"].map((x) => x)) : [],
       );
 
   Map<String, dynamic> toJson() => {
