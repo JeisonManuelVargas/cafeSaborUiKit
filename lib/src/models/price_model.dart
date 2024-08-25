@@ -22,25 +22,26 @@ class PriceModel {
         enable: enable ?? this.enable,
       );
 
-  factory PriceModel.fromRawJson(String str) => PriceModel.fromJson(json.decode(str));
+  factory PriceModel.fromRawJson(String str) =>
+      PriceModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
   factory PriceModel.fromJson(Map<String, dynamic> json) => PriceModel(
-    size: json["size"],
-    price: json["price"],
-    enable: json["enable"],
-  );
+        size: json["size"],
+        price: json["price"],
+        enable: json["enable"],
+      );
 
   factory PriceModel.init() => PriceModel(
-    size: "",
-    price: 0,
-    enable: true,
-  );
+        size: "",
+        price: 0,
+        enable: true,
+      );
 
   Map<String, dynamic> toJson() => {
-    "size": size,
-    "price": price,
-    "enable": enable,
-  };
+        "size": size,
+        "price": price,
+        "enable": enable,
+      };
 }

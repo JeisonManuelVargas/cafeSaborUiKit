@@ -14,6 +14,7 @@ class ProductModel {
   final DocumentReference? id;
   final List<PriceModel> price;
   final List<ShowerProductModel> images;
+  final List<DocumentReference> favoriteUsers;
 
   ProductModel({
     this.id,
@@ -23,6 +24,7 @@ class ProductModel {
     required this.images,
     required this.enabled,
     required this.description,
+    required this.favoriteUsers,
   });
 
   factory ProductModel.init() => ProductModel(
@@ -32,6 +34,7 @@ class ProductModel {
         images: [],
         enabled: true,
         description: "",
+        favoriteUsers: [],
         color: CafeKit.util.color.green,
       );
 
@@ -40,12 +43,10 @@ class ProductModel {
         name: data["name"] ?? "",
         enabled: data["enabled"] ?? true,
         description: data["description"] ?? "",
-        color:
-            data["color"] != null ? Color(data["color"]) : UiColor().textColor,
-        price: List<PriceModel>.from(
-            data["price"].map((x) => PriceModel.fromJson(x))),
-        images: List<ShowerProductModel>.from(
-            data["images"].map((x) => ShowerProductModel.fromJson(x))),
+        color: data["color"] != null ? Color(data["color"]) : UiColor().textColor,
+        price: List<PriceModel>.from(data["price"].map((x) => PriceModel.fromJson(x))),
+        favoriteUsers: List<DocumentReference>.from(data["favorite_users"].map((x) => x)),
+        images: List<ShowerProductModel>.from(data["images"].map((x) => ShowerProductModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -53,6 +54,7 @@ class ProductModel {
         "enabled": enabled,
         "color": color.value,
         "description": description,
+        "favorite_users": favoriteUsers,
         "price": List<dynamic>.from(price.map((x) => x.toJson())),
         "images": List<dynamic>.from(images.map((x) => x.toJson())),
       };
@@ -61,10 +63,11 @@ class ProductModel {
     String? name,
     Color? color,
     bool? enabled,
-    List<PriceModel>? price,
     String? description,
     DocumentReference? id,
+    List<PriceModel>? price,
     List<ShowerProductModel>? images,
+    List<DocumentReference>? favoriteUsers,
   }) =>
       ProductModel(
         id: id ?? this.id,
@@ -74,5 +77,6 @@ class ProductModel {
         images: images ?? this.images,
         enabled: enabled ?? this.enabled,
         description: description ?? this.description,
+        favoriteUsers: favoriteUsers ?? this.favoriteUsers,
       );
 }
