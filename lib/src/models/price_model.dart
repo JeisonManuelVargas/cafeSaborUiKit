@@ -32,6 +32,12 @@ class PriceModel {
     enable: json["enable"],
   );
 
+  factory PriceModel.init() => PriceModel(
+    size: "",
+    price: 0,
+    enable: true,
+  );
+
   Map<String, dynamic> toJson() => {
     "size": size,
     "price": price,

@@ -4,6 +4,7 @@ import 'package:cafe_sabor_ui_kit/src/widgets/index_widget.dart';
 
 //models
 export 'package:cafe_sabor_ui_kit/src/models/user_model.dart';
+export 'package:cafe_sabor_ui_kit/src/models/price_model.dart';
 export 'package:cafe_sabor_ui_kit/src/models/button_model.dart';
 export 'package:cafe_sabor_ui_kit/src/models/product_model.dart';
 export 'package:cafe_sabor_ui_kit/src/models/font_family_type.dart';
