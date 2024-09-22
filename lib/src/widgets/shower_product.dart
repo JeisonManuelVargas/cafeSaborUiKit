@@ -10,6 +10,7 @@ class CompositeWidgets {
     double marginTopMain = 0,
     bool disableAnimation = false,
     required Color backgroundColor,
+    AlignmentDirectional? alignment,
     required double heightBackground,
     List<Widget> backgroundBody = const [],
     required List<ShowerProductModel> images,
@@ -17,6 +18,7 @@ class CompositeWidgets {
       _ShowerProductWidget(
         onTap: onTap,
         images: images,
+        alignment: alignment,
         marginTopMain: marginTopMain,
         backgroundBody: backgroundBody,
         backgroundColor: backgroundColor,
@@ -32,10 +34,12 @@ class _ShowerProductWidget extends StatefulWidget {
   final bool disableAnimation;
   final double heightBackground;
   final List<Widget> backgroundBody;
+  final AlignmentDirectional? alignment;
   final List<ShowerProductModel> images;
 
   const _ShowerProductWidget({
     this.onTap,
+    this.alignment,
     required this.images,
     required this.marginTopMain,
     required this.backgroundBody,
@@ -70,7 +74,10 @@ class _ShowerProductWidgetState extends State<_ShowerProductWidget> {
             bottomRight: Radius.circular(33),
           ),
         ),
-        child: Stack(children: widget.backgroundBody),
+        child: Stack(
+          alignment: widget.alignment != null ? widget.alignment! : Alignment.center,
+          children: widget.backgroundBody,
+        ),
       ),
     );
 
