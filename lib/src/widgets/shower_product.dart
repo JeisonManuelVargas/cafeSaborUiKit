@@ -70,7 +70,9 @@ class _ShowerProductWidgetState extends State<_ShowerProductWidget> {
             bottomRight: Radius.circular(33),
           ),
         ),
-        child: Stack(children: widget.backgroundBody),
+        child: Stack(
+          children: widget.backgroundBody,
+        ),
       ),
     );
 
